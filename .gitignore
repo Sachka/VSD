@@ -4,6 +4,9 @@
 # vscode related
 tasks.json
 
+# project related
+data_WSD_VS/vecs100-linear-frwiki
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
