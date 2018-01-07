@@ -181,15 +181,15 @@ def complex_feature_extraction(example_list, target_verb):
                 # Check to find DEPENDANTS: (that is to say, words that "points" to the target verb index)
 
                 if int(position) == int(target_idx_list[i]):
-                        # Surface syntaxe
+                        # Surface syntax
                     if "S:" in target_tag_list[i]:
                         curr_surf_dep_words.append(word_elements[1])
                         curr_surf_dep_tags.append(target_tag_list[i][2:])
-                    # Deep syntaxe
+                    # Deep syntax
                     elif "D:" in target_tag_list[i]:
                         curr_deep_dep_words.append(word_elements[1])
                         curr_deep_dep_tags.append(target_tag_list[i][2:])
-                    # if there is no 'S' or 'D', it is for both types of syntaxe,we add into the two lists
+                    # if there is no 'S' or 'D', it is for both types of syntax,we add into the two lists
                     else:
                         curr_surf_dep_words.append(word_elements[1])
                         curr_surf_dep_tags.append(target_tag_list[i])
@@ -220,13 +220,15 @@ def complex_feature_extraction(example_list, target_verb):
                 for i in gov_idx_surf:
                     if int(i) == 0:
                         # Append "root" if i == 0
-                        curr_surf_gov_words.append(example[position - 1][7])
+                        # curr_surf_gov_words.append(example[position - 1][7])
+                        curr_surf_gov_words.append(example[int(i) - 1][1])
                     else:
                         curr_surf_gov_words.append(example[int(i) - 1][1])
                 for i in gov_idx_deep:
                     if int(i) == 0:
                         # Append "root" if i == 0
-                        curr_deep_gov_words.append(example[position - 1][7])
+                        curr_deep_gov_words.append(example[int(i) - 1][1])
+                        # curr_deep_gov_words.append(example[position - 1][7])
                     else:
                         curr_deep_gov_words.append(example[int(i) - 1][1])
 

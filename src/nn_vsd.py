@@ -107,7 +107,8 @@ def embedding_encoding(word_list, embeddings_index):
             if word in embeddings_index:
                 wordc += 1
                 emb_map = np.add(emb_map, embeddings_index[word])
-        emb_map /= wordc
+        if wordc > 0:
+            emb_map /= wordc
         # emb_map = [embeddings_index[word] for word in word_list if word in embeddings_index]
         return emb_map
 
@@ -157,5 +158,11 @@ WE = "data_WSD_VS/vecs100-linear-frwiki"
 ex = obtain_examples(CONLL)
 RAW_F = feature_extraction(ex, "aborder")
 ENC_F = encode_features(RAW_F, WE)
+FN = ["index", "window1", "window2", "surface dep words", "surface dep tags", "surface gov words",
+      "surface gov tags", "deep dep words", "deep dep tags", "deep gov wods", "deep gov tags"]
+
 for i in range(11):
-    print(ENC_F[i][0])
+    print(FN[i])
+    print(RAW_F[i][216])
+    print(ENC_F[i][216])
+    print("____________________________________________________________")
